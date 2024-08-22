@@ -29,7 +29,7 @@ export default function HomePage() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',    
-        height: '50vh',          
+        height: '90vh',          
         flexDirection: 'column',  
         textAlign: 'center',      
       }}>
@@ -44,6 +44,7 @@ export default function HomePage() {
             padding: '20px',
             borderRadius: '10px',
             textAlign: 'center',
+            marginBottom: '50px',
           }}
         >
           <SignIn
@@ -52,9 +53,6 @@ export default function HomePage() {
             appearance={{
               variables: {
                 colorPrimary: "#1E90FF",
-            
-   
-         
               },
 
             }}
@@ -78,9 +76,9 @@ export default function HomePage() {
         
             fontSize: { xs: '14px', sm: '16px' },
           }}
-          onClick={() => router.push('/chatbot')}
+          href = "/dashboard"
         >
-          Go to Chatbot
+          Go to Nearest Clinic
         </Button>
         </Box>
       </SignedIn>

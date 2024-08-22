@@ -14,6 +14,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import EventIcon from '@mui/icons-material/Event';
+import HomeIcon from '@mui/icons-material/Home';
 import {
   ClerkProvider,
   SignInButton,
@@ -50,12 +51,22 @@ export default function NavBar() {
     >
       <List>
       <Box sx={{ padding: '10px', textAlign: 'center' }}>
+        <SignedOut>
+          <Typography variant="h6" component="div"> You need to Login First! </Typography>
+        </SignedOut>
         <SignedIn>
           <Typography variant="h6" component="div">
             <UserButton />
           </Typography>
         </SignedIn>
       </Box>
+      <ListItem button onClick={() => handleNavigation('/')}>
+        <ListItemIcon>
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText primary="Home" />
+      </ListItem>
+      <SignedIn>
         <ListItem button onClick={() => handleNavigation('/dashboard')}>
           <ListItemIcon>
             <DashboardIcon />
@@ -68,6 +79,7 @@ export default function NavBar() {
           </ListItemIcon>
           <ListItemText primary="Appointments" />
         </ListItem>
+        </SignedIn>
       </List>
       <Divider />
     </Box>
