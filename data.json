@@ -1,0 +1,129 @@
+{"diseases" : [
+    {
+      "disease": "Influenza",
+      "symptoms": ["Fever", "Cough", "Sore throat", "Runny nose", "Body aches"],
+      "description": "A viral infection that attacks the respiratory system.",
+      "treatment": ["Rest", "Fluids", "Antiviral medications"]
+    },
+    {
+      "disease": "Diabetes Type 2",
+      "symptoms": ["Increased thirst", "Frequent urination", "Fatigue", "Blurred vision"],
+      "description": "A chronic condition that affects the way the body processes blood sugar (glucose).",
+      "treatment": ["Diet", "Exercise", "Insulin therapy", "Oral medications"]
+    },
+    {
+      "disease": "Hypertension",
+      "symptoms": ["Headache", "Shortness of breath", "Nosebleeds", "Fatigue"],
+      "description": "A condition in which the force of the blood against the artery walls is too high.",
+      "treatment": ["Lifestyle changes", "Antihypertensive medications"]
+    },
+    {
+      "disease": "Asthma",
+      "symptoms": ["Wheezing", "Shortness of breath", "Chest tightness", "Coughing"],
+      "description": "A condition in which the airways narrow and swell, making breathing difficult.",
+      "treatment": ["Inhalers", "Bronchodilators", "Steroids"]
+    },
+    {
+      "disease": "Migraine",
+      "symptoms": ["Severe headache", "Nausea", "Sensitivity to light", "Sensitivity to sound"],
+      "description": "A neurological condition characterized by intense, debilitating headaches.",
+      "treatment": ["Pain relievers", "Anti-nausea medications", "Preventive medications"]
+    },
+    {
+      "disease": "Pneumonia",
+      "symptoms": ["Cough with phlegm", "Fever", "Chills", "Difficulty breathing"],
+      "description": "An infection that inflames the air sacs in one or both lungs.",
+      "treatment": ["Antibiotics", "Cough medicine", "Fever reducers"]
+    },
+    {
+      "disease": "Anemia",
+      "symptoms": ["Fatigue", "Pale skin", "Shortness of breath", "Dizziness"],
+      "description": "A condition in which you lack enough healthy red blood cells to carry adequate oxygen to your body's tissues.",
+      "treatment": ["Iron supplements", "Vitamin B12", "Folic acid", "Blood transfusion"]
+    },
+    {
+      "disease": "COVID-19",
+      "symptoms": ["Fever", "Cough", "Shortness of breath", "Loss of taste or smell", "Fatigue"],
+      "description": "A contagious respiratory illness caused by the SARS-CoV-2 virus.",
+      "treatment": ["Rest", "Fluids", "Antiviral medications", "Oxygen therapy"]
+    },
+    {
+      "disease": "Bronchitis",
+      "symptoms": ["Cough", "Production of mucus", "Fatigue", "Shortness of breath"],
+      "description": "An inflammation of the lining of your bronchial tubes.",
+      "treatment": ["Cough medicine", "Bronchodilators", "Steroids"]
+    },
+    {
+      "disease": "Appendicitis",
+      "symptoms": ["Abdominal pain", "Nausea", "Vomiting", "Loss of appetite"],
+      "description": "An inflammation of the appendix, a small tube that projects from your colon.",
+      "treatment": ["Surgery", "Antibiotics"]
+    },
+    {
+      "disease": "Gastroenteritis",
+      "symptoms": ["Diarrhea", "Nausea", "Vomiting", "Abdominal cramps"],
+      "description": "An inflammation of the stomach and intestines, typically due to a viral or bacterial infection.",
+      "treatment": ["Rest", "Fluids", "Electrolyte solutions"]
+    },
+    {
+      "disease": "Osteoarthritis",
+      "symptoms": ["Joint pain", "Stiffness", "Swelling", "Reduced range of motion"],
+      "description": "A degenerative joint disease that occurs when the cartilage that cushions the ends of bones wears down over time.",
+      "treatment": ["Pain relievers", "Physical therapy", "Joint replacement surgery"]
+    },
+    {
+      "disease": "Psoriasis",
+      "symptoms": ["Red patches of skin", "Dry, cracked skin", "Itching", "Burning sensation"],
+      "description": "A chronic autoimmune condition that causes the rapid build-up of skin cells, leading to scaling on the skin’s surface.",
+      "treatment": ["Topical treatments", "Phototherapy", "Oral or injected medications"]
+    },
+    {
+      "disease": "Tuberculosis",
+      "symptoms": ["Coughing up blood", "Chest pain", "Fatigue", "Weight loss", "Night sweats"],
+      "description": "A potentially serious infectious disease that mainly affects the lungs.",
+      "treatment": ["Antibiotics for 6-9 months"]
+    },
+    {
+      "disease": "Epilepsy",
+      "symptoms": ["Seizures", "Temporary confusion", "Staring spells", "Loss of consciousness"],
+      "description": "A central nervous system disorder in which brain activity becomes abnormal, causing seizures or periods of unusual behavior.",
+      "treatment": ["Anti-seizure medications", "Surgery", "Therapies"]
+    },
+    {
+      "disease": "Chronic Kidney Disease",
+      "symptoms": ["Fatigue", "Swelling of feet and ankles", "Shortness of breath", "Nausea"],
+      "description": "A long-term condition where the kidneys don't work as well as they should.",
+      "treatment": ["Medications", "Dialysis", "Kidney transplant"]
+    },
+    {
+      "disease": "Hepatitis B",
+      "symptoms": ["Yellowing of the skin", "Dark urine", "Fatigue", "Abdominal pain"],
+      "description": "A serious liver infection caused by the hepatitis B virus (HBV).",
+      "treatment": ["Antiviral medications", "Liver transplant in severe cases"]
+    },
+    {
+      "disease": "Rheumatoid Arthritis",
+      "symptoms": ["Joint pain", "Swelling", "Stiffness", "Fatigue", "Fever"],
+      "description": "An autoimmune disorder that primarily affects joints, causing inflammation.",
+      "treatment": ["NSAIDs", "Steroids", "DMARDs", "Biologic agents"]
+    },
+    {
+      "disease": "Multiple Sclerosis",
+      "symptoms": ["Numbness", "Fatigue", "Blurred vision", "Tingling sensation"],
+      "description": "A disease in which the immune system eats away at the protective covering of nerves.",
+      "treatment": ["Corticosteroids", "Plasma exchange", "Disease-modifying therapies"]
+    },
+    {
+      "disease": "Alzheimer's Disease",
+      "symptoms": ["Memory loss", "Confusion", "Difficulty concentrating", "Personality changes"],
+      "description": "A progressive neurological disorder that causes brain cells to waste away (degenerate) and die.",
+      "treatment": ["Cholinesterase inhibitors", "NMDA receptor antagonists", "Supportive care"]
+    },
+    {
+      "disease": "Lyme Disease",
+      "symptoms": ["Fever", "Headache", "Fatigue", "Skin rash"],
+      "description": "An infectious disease caused by the bacterium Borrelia burgdorferi, transmitted to humans through the bite of infected black-legged ticks.",
+      "treatment": ["Antibiotics"]
+    }
+  ]
+  }
