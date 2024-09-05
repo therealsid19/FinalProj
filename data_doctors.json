@@ -1,0 +1,205 @@
+{
+    "doctors": [
+      {
+        "doctor": "Dr. John Smith",
+        "specialty": "Cardiology",
+        "location": "New York, NY",
+        "clinic_name": "New York Heart Clinic",
+        "clinic_location": "1234 Heart St, New York, NY 10001",
+        "website": "https://www.nyheartclinic.com",
+        "Phone": "(123) 456-7890",
+        "Email": "info@nyheartclinic.com"
+      },
+      {
+        "doctor": "Dr. Emily Davis",
+        "specialty": "Dermatology",
+        "location": "Los Angeles, CA",
+        "clinic_name": "LA Skin Care Center",
+        "clinic_location": "5678 Skin Ave, Los Angeles, CA 90001",
+        "website": "https://www.laskincare.com",
+        "Phone": "(987) 654-3210",
+        "Email": "appointments@laskincare.com"
+      },
+      {
+        "doctor": "Dr. Michael Brown",
+        "specialty": "Orthopedics",
+        "location": "Chicago, IL",
+        "clinic_name": "Chicago Bone & Joint Hospital",
+        "clinic_location": "91011 Joint Dr, Chicago, IL 60601",
+        "website": "https://www.chicagobonejoint.com",
+        "Phone": "(312) 123-4567",
+        "Email": "contact@chicagobonejoint.com"
+      },
+      {
+        "doctor": "Dr. Linda Johnson",
+        "specialty": "Pediatrics",
+        "location": "Houston, TX",
+        "clinic_name": "Houston Children's Medical Center",
+        "clinic_location": "7890 Kids Way, Houston, TX 77001",
+        "website": "https://www.houstonchildrensmed.com",
+        "Phone": "(713) 987-6543",
+        "Email": "info@houstonchildrensmed.com"
+      },
+      {
+        "doctor": "Dr. Robert Wilson",
+        "specialty": "Neurology",
+        "location": "Phoenix, AZ",
+        "clinic_name": "Phoenix Neuro Center",
+        "clinic_location": "3456 Brain Blvd, Phoenix, AZ 85001",
+        "website": "https://www.phoenixneuro.com",
+        "Phone": "(602) 123-9876",
+        "Email": "appointments@phoenixneuro.com"
+      },
+      {
+        "doctor": "Dr. Susan Taylor",
+        "specialty": "Oncology",
+        "location": "Philadelphia, PA",
+        "clinic_name": "Philadelphia Cancer Institute",
+        "clinic_location": "1122 Hope St, Philadelphia, PA 19101",
+        "website": "https://www.philacancerinstitute.com",
+        "Phone": "(215) 456-7890",
+        "Email": "contact@philacancerinstitute.com"
+      },
+      {
+        "doctor": "Dr. Mark Anderson",
+        "specialty": "Gastroenterology",
+        "location": "San Antonio, TX",
+        "clinic_name": "San Antonio Digestive Health",
+        "clinic_location": "4321 Gut Dr, San Antonio, TX 78201",
+        "website": "https://www.sanantoniogastro.com",
+        "Phone": "(210) 987-1234",
+        "Email": "info@sanantoniogastro.com"
+      },
+      {
+        "doctor": "Dr. Patricia Lee",
+        "specialty": "Rheumatology",
+        "location": "San Diego, CA",
+        "clinic_name": "San Diego Arthritis Center",
+        "clinic_location": "6543 Joint Blvd, San Diego, CA 92101",
+        "website": "https://www.sandiegoarthritis.com",
+        "Phone": "(619) 123-4567",
+        "Email": "appointments@sandiegoarthritis.com"
+      },
+      {
+        "doctor": "Dr. William Harris",
+        "specialty": "Endocrinology",
+        "location": "Dallas, TX",
+        "clinic_name": "Dallas Endocrine Clinic",
+        "clinic_location": "9876 Hormone St, Dallas, TX 75201",
+        "website": "https://www.dallasendocrine.com",
+        "Phone": "(214) 654-3210",
+        "Email": "contact@dallasendocrine.com"
+      },
+      {
+        "doctor": "Dr. Jennifer Martinez",
+        "specialty": "Ophthalmology",
+        "location": "San Jose, CA",
+        "clinic_name": "San Jose Eye Center",
+        "clinic_location": "3214 Vision Ave, San Jose, CA 95101",
+        "website": "https://www.sanjoseeye.com",
+        "Phone": "(408) 987-6543",
+        "Email": "info@sanjoseeye.com"
+      },
+      {
+        "doctor": "Dr. James Clark",
+        "specialty": "Urology",
+        "location": "Austin, TX",
+        "clinic_name": "Austin Urology Associates",
+        "clinic_location": "5678 Bladder Blvd, Austin, TX 73301",
+        "website": "https://www.austinurology.com",
+        "Phone": "(512) 123-4567",
+        "Email": "appointments@austinurology.com"
+      },
+      {
+        "doctor": "Dr. Barbara Hernandez",
+        "specialty": "Obstetrics and Gynecology",
+        "location": "Jacksonville, FL",
+        "clinic_name": "Jacksonville Women's Health",
+        "clinic_location": "8765 Motherhood St, Jacksonville, FL 32099",
+        "website": "https://www.jacksonvillewomenshealth.com",
+        "Phone": "(904) 654-3210",
+        "Email": "info@jacksonvillewomenshealth.com"
+      },
+      {
+        "doctor": "Dr. Charles Lewis",
+        "specialty": "Pulmonology",
+        "location": "Columbus, OH",
+        "clinic_name": "Columbus Lung Center",
+        "clinic_location": "4321 Breath Dr, Columbus, OH 43085",
+        "website": "https://www.columbuslungcenter.com",
+        "Phone": "(614) 987-1234",
+        "Email": "contact@columbuslungcenter.com"
+      },
+      {
+        "doctor": "Dr. Elizabeth Walker",
+        "specialty": "Dermatology",
+        "location": "Charlotte, NC",
+        "clinic_name": "Charlotte Skin Institute",
+        "clinic_location": "1234 Skin Ave, Charlotte, NC 28201",
+        "website": "https://www.charlotteskin.com",
+        "Phone": "(704) 123-9876",
+        "Email": "appointments@charlotteskin.com"
+      },
+      {
+        "doctor": "Dr. Anthony King",
+        "specialty": "Nephrology",
+        "location": "San Francisco, CA",
+        "clinic_name": "SF Kidney Center",
+        "clinic_location": "6543 Renal Blvd, San Francisco, CA 94101",
+        "website": "https://www.sfkidneycenter.com",
+        "Phone": "(415) 987-6543",
+        "Email": "info@sfkidneycenter.com"
+      },
+      {
+        "doctor": "Dr. Sandra Adams",
+        "specialty": "Hematology",
+        "location": "Fort Worth, TX",
+        "clinic_name": "Fort Worth Blood Center",
+        "clinic_location": "9876 Vein St, Fort Worth, TX 76101",
+        "website": "https://www.fortworthbloodcenter.com",
+        "Phone": "(817) 654-3210",
+        "Email": "contact@fortworthbloodcenter.com"
+      },
+      {
+        "doctor": "Dr. Steven Nelson",
+        "specialty": "Psychiatry",
+        "location": "Indianapolis, IN",
+        "clinic_name": "Indy Mind Health",
+        "clinic_location": "3456 Brain Ave, Indianapolis, IN 46201",
+        "website": "https://www.indymindhealth.com",
+        "Phone": "(317) 123-4567",
+        "Email": "appointments@indymindhealth.com"
+      },
+      {
+        "doctor": "Dr. Laura Perez",
+        "specialty": "Allergy and Immunology",
+        "location": "Seattle, WA",
+        "clinic_name": "Seattle Allergy Center",
+        "clinic_location": "4321 Allergy Blvd, Seattle, WA 98101",
+        "website": "https://www.seattleallergycenter.com",
+        "Phone": "(206) 987-1234",
+        "Email": "info@seattleallergycenter.com"
+      },
+      {
+        "doctor": "Dr. Kevin White",
+        "specialty": "Otolaryngology",
+        "location": "Denver, CO",
+        "clinic_name": "Denver ENT Specialists",
+        "clinic_location": "5678 Ear Nose Throat St, Denver, CO 80014",
+        "website": "https://www.denverentspecialists.com",
+        "Phone": "(720) 123-4567",
+        "Email": "contact@denverentspecialists.com"
+      },
+      {
+        "doctor": "Dr. Nancy Moore",
+        "specialty": "Geriatrics",
+        "location": "Boston, MA",
+        "clinic_name": "Boston Senior Care",
+        "clinic_location": "8765 Elderly Rd, Boston, MA 02101",
+        "website": "https://www.bostonseniorcare.com",
+        "Phone": "(617) 654-3210",
+        "Email": "info@bostonseniorcare.com"
+      }
+    ]
+  }
+  

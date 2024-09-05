@@ -15,6 +15,7 @@ import Divider from '@mui/material/Divider';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import EventIcon from '@mui/icons-material/Event';
 import HomeIcon from '@mui/icons-material/Home';
+import ChatIcon from '@mui/icons-material/Chat';
 import {
   ClerkProvider,
   SignInButton,
@@ -79,6 +80,12 @@ export default function NavBar() {
           </ListItemIcon>
           <ListItemText primary="Appointments" />
         </ListItem>
+        <ListItem button onClick={() => handleNavigation('/chatbot')}>
+          <ListItemIcon>
+            <ChatIcon />
+          </ListItemIcon>
+          <ListItemText primary="Chatbot" />
+        </ListItem>
         </SignedIn>
       </List>
       <Divider />
@@ -87,7 +94,7 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ background: 'black' }}>
+      <AppBar position="static" sx={{ background: '#0c4ca6' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -100,7 +107,7 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            HealthApp
+            MediBot
           </Typography>
           <SignedOut>
             <Button color="inherit">Login</Button>
