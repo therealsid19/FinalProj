@@ -32,7 +32,7 @@ exports.sendReminderEmails = functions.pubsub.schedule("every 1 minutes").onRun(
       // Construct email message
       const msg = {
         to: reminder.email, // User's email address stored in Firestore
-        from: "your-email@example.com", // Verified sender email from SendGrid
+        from: "healthapp148@gmail.com", // Verified sender email from SendGrid
         subject: `Reminder: Take your medication - ${reminder.name}`,
         text: `This is a reminder to take your medication: ${reminder.name} at ${reminder.time}. Please don't forget!`,
       };

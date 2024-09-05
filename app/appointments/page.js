@@ -5,6 +5,8 @@ import { useUser } from '@clerk/nextjs';
 import Calendar from 'react-calendar'; // Ensure react-calendar is installed
 import { deleteReminder, getReminders, addReminder, updateReminder } from '@/lib/reminders'; // Ensure these functions are defined
 import NavBar from "../components/NavBar";
+import { MdEdit } from "react-icons/md";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 export default function MedicalReminders() {
   const [reminders, setReminders] = useState([]);
@@ -32,7 +34,6 @@ export default function MedicalReminders() {
         time: `${time} ${amPm}`,
         date: selectedDate.toISOString().split('T')[0], // Store date in YYYY-MM-DD format
       };
-      
       const reminder = await addReminder(user.id, newReminder);
       setReminders([...reminders, reminder]);
       setMedicineName("");
@@ -74,7 +75,7 @@ export default function MedicalReminders() {
   };
 
   const handleDeleteReminder = async (id) => {
-    await deleteReminder(user.id, id);
+    await deleteReminder(user.id, selectedDate, id);
     setReminders(reminders.filter(rem => rem.id !== id));
     setOpenSnackbar(true);
   };
@@ -152,15 +153,16 @@ export default function MedicalReminders() {
       <List>
         {reminders.map((reminder) => (
           <ListItem key={reminder.id} sx={{ backgroundColor: "#2a2a2a", marginBottom: "10px", borderRadius: "4px", padding: "10px" }}>
+    
             <ListItemText 
               primary={`${reminder.name} (${reminder.type})`} 
               secondary={`Time: ${reminder.time}`} 
             />
             <IconButton edge="end" color="inherit" onClick={() => handleEditReminder(reminder)}>
-              <i className="fas fa-edit"></i>
+              <i className="fas fa-edit"><MdEdit /></i>
             </IconButton>
             <IconButton edge="end" color="inherit" onClick={() => handleDeleteReminder(reminder.id)}>
-              <i className="fas fa-trash"></i>
+              <i className="fas fa-trash"><RiDeleteBin5Fill /></i>
             </IconButton>
           </ListItem>
         ))}
