@@ -1,6 +1,7 @@
 // app/page.js
 "use client";
 import styles from './page.module.css';
+import Link from 'next/link';
 import Navbar from './components/NavBar';
 import { FaClinicMedical, FaCalendarAlt, FaRobot } from 'react-icons/fa';
 import { Box, Typography, Button } from '@mui/material';
@@ -102,6 +103,9 @@ export default function HomePage() {
           <FaRobot className={styles.icon} />
           <h3 className={styles.cardTitle}>Medical Chatbot</h3>
           <p className={styles.cardDescription}>Get instant medical advice 24/7.</p>
+          <Link href="/chatbot" className={styles.chatbotButton}>
+            Start Chat
+          </Link>
         </div>
       </section>
     </div>

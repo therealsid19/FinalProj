@@ -81,3 +81,21 @@
   font-size: 1rem;
   color: #666;
 }
+
+/* Chatbot Button */
+.chatbotButton {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #0070f3;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.chatbotButton:hover {
+  background-color: #005b
+}

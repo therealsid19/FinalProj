@@ -40,13 +40,15 @@ Description: Tension-type headaches are characterized by a dull, aching pain and
 export async function POST(req) {
     const data = await req.json()
     const pc = new Pinecone({
-        apikey: process.env.PINECONE_API_KEY,
+        apiKey: process.env.PINECONE_API_KEY,
     })
     const index = pc.index('rag').namespace('ns1')
-    const openai = new OpenAI()
+    const openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+    })
 
     const text = data[data.length-1].content
-    const embedding = await OpenAI.Embeddings.create({
+    const embedding = await openai.embeddings.create({
         model: 'text-embedding-3-small',
         input: text,
         encoding_format: 'float'
@@ -61,7 +63,7 @@ export async function POST(req) {
     let resultString = '\n\nReturned results from vector db (done automatically):'
     results.matches.forEach((match) => {
         resultString += `\n
-        Disease: ${match.id}
+        Disease: ${match.metadata.disease}
         Symptoms: ${match.metadata.symptoms}
         Description: ${match.metadata.description}
         Treatment: ${match.metadata.treatment}
@@ -79,19 +81,19 @@ export async function POST(req) {
             ...lastDataWithoutLastMessage,
             {role: 'user', content: lastMessageContent},
         ],
-        mode: 'gpt-4o-mini',
+        model: 'gpt-4o-mini',
         stream: true,
     })
 
-    const stream = ReadableStream({
+    const stream = new ReadableStream({
         async start(controller){
             const encoder = new TextEncoder()
             try{
                 for await (const chunk of completion){
-                    const content = chunk.choice[0]?.delta?.content
+                    const content = chunk.choices[0]?.delta?.content;
                     if (content){
-                        const text = encoder.encode(content)
-                        controller.enqueue(text)
+                        const text = encoder.encode(content);
+                        controller.enqueue(text);
                     }
                 }
             } catch(err) {
@@ -100,6 +102,6 @@ export async function POST(req) {
                 controller.close()
             }
         },
-    })
+    });
     return new NextResponse(stream)
 }
