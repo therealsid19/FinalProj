@@ -1,46 +1,105 @@
 "use client";
-import React, { useState } from "react";
-import { Box, Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel, List, ListItem, ListItemText } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel, List, ListItem, ListItemText, IconButton, Snackbar } from "@mui/material";
+import { useUser } from '@clerk/nextjs';
+import Calendar from 'react-calendar'; // Ensure react-calendar is installed
+import { deleteReminder, getReminders, addReminder, updateReminder } from '@/lib/reminders'; // Ensure these functions are defined
 import NavBar from "../components/NavBar";
+import { MdEdit } from "react-icons/md";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 export default function MedicalReminders() {
   const [reminders, setReminders] = useState([]);
   const [medicineName, setMedicineName] = useState("");
   const [medicineType, setMedicineType] = useState("");
-  const [intervalType, setIntervalType] = useState("");
-  const [intervalValue, setIntervalValue] = useState("");
+  const [time, setTime] = useState("");
+  const [amPm, setAmPm] = useState("AM");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [editingReminder, setEditingReminder] = useState(null);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const { user } = useUser();
 
-  const handleAddReminder = () => {
-    if (medicineName && medicineType && intervalType && intervalValue) {
+  useEffect(() => {
+    console.log('Selected Date:', selectedDate); // Debug log
+    if (user && selectedDate) {
+      getReminders(user.id, selectedDate).then(setReminders);
+    }
+  }, [user, selectedDate]);
+
+  const handleAddReminder = async () => {
+    if (medicineName && medicineType && time && amPm) {
       const newReminder = {
         name: medicineName,
         type: medicineType,
-        interval: `${intervalValue} ${intervalType}`,
+        time: `${time} ${amPm}`,
+        date: selectedDate.toISOString().split('T')[0], // Store date in YYYY-MM-DD format
       };
-      setReminders([...reminders, newReminder]);
+      const reminder = await addReminder(user.id, newReminder);
+      setReminders([...reminders, reminder]);
       setMedicineName("");
       setMedicineType("");
-      setIntervalType("");
-      setIntervalValue("");
+      setTime("");
+      setAmPm("AM");
+      setOpenSnackbar(true);
     }
   };
 
+  const handleEditReminder = (reminder) => {
+    setMedicineName(reminder.name);
+    setMedicineType(reminder.type);
+    const [timePart, amPmPart] = reminder.time.split(' ');
+    setTime(timePart);
+    setAmPm(amPmPart);
+    setEditingReminder(reminder);
+  };
+
+  const handleSaveReminder = async () => {
+    if (editingReminder) {
+      const updatedReminder = {
+        ...editingReminder,
+        name: medicineName,
+        type: medicineType,
+        time: `${time} ${amPm}`,
+        date: selectedDate.toISOString().split('T')[0], // Store date in YYYY-MM-DD format
+      };
+
+      const reminder = await updateReminder(user.id, updatedReminder);
+      setReminders(reminders.map(rem => (rem.id === reminder.id ? reminder : rem)));
+      setMedicineName("");
+      setMedicineType("");
+      setTime("");
+      setAmPm("AM");
+      setEditingReminder(null);
+      setOpenSnackbar(true);
+    }
+  };
+
+  const handleDeleteReminder = async (id) => {
+    await deleteReminder(user.id, selectedDate, id);
+    setReminders(reminders.filter(rem => rem.id !== id));
+    setOpenSnackbar(true);
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
   return (
-    <Box sx={{ padding: "20px", backgroundColor: "black", minHeight: "100vh" }}>
+    <Box sx={{ backgroundColor: "black", color: "white", padding: "5px", borderRadius: "8px" }}>
       <NavBar />
-      <Typography variant="h4" gutterBottom sx={{ color: "white" }}>
+      <Typography variant="h4" gutterBottom sx={{ color: "lightgray" }}>
         Medical Reminders
       </Typography>
 
-      <Box sx={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
+      <Box sx={{ marginBottom: "20px", padding: "10px", backgroundColor: "#1c1c1c", borderRadius: "8px" }}>
         <TextField
           label="Medicine Name"
           value={medicineName}
           onChange={(e) => setMedicineName(e.target.value)}
-          sx={{ flexGrow: 1, backgroundColor: "white", borderRadius: "4px" }}
+          sx={{ flexGrow: 1, backgroundColor: "white", borderRadius: "4px", marginBottom: "10px" }}
         />
 
-        <FormControl sx={{ minWidth: "150px", backgroundColor: "white", borderRadius: "4px" }}>
+        <FormControl sx={{ minWidth: "150px", backgroundColor: "white", borderRadius: "4px", marginBottom: "10px" }}>
           <InputLabel>Medicine Type</InputLabel>
           <Select
             value={medicineType}
@@ -54,46 +113,68 @@ export default function MedicalReminders() {
         </FormControl>
 
         <TextField
-          label="Interval Value"
-          type="number"
-          value={intervalValue}
-          onChange={(e) => setIntervalValue(e.target.value)}
-          sx={{ width: "100px", backgroundColor: "white", borderRadius: "4px" }}
+          label="Time"
+          type="text"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          sx={{ width: "100px", backgroundColor: "white", borderRadius: "4px", marginBottom: "10px" }}
         />
 
-        <FormControl sx={{ minWidth: "120px", backgroundColor: "white", borderRadius: "4px" }}>
-          <InputLabel>Interval Type</InputLabel>
+        <FormControl sx={{ minWidth: "120px", backgroundColor: "white", borderRadius: "4px", marginBottom: "10px" }}>
+          <InputLabel>AM/PM</InputLabel>
           <Select
-            value={intervalType}
-            onChange={(e) => setIntervalType(e.target.value)}
+            value={amPm}
+            onChange={(e) => setAmPm(e.target.value)}
           >
-            <MenuItem value="hour(s)">Hour(s)</MenuItem>
-            <MenuItem value="day(s)">Day(s)</MenuItem>
-            <MenuItem value="week(s)">Week(s)</MenuItem>
+            <MenuItem value="AM">AM</MenuItem>
+            <MenuItem value="PM">PM</MenuItem>
           </Select>
         </FormControl>
 
         <Button
           variant="contained"
           color="primary"
-          onClick={handleAddReminder}
-          sx={{ height: "56px" }}
+          onClick={editingReminder ? handleSaveReminder : handleAddReminder}
+          sx={{ height: "56px", backgroundColor: "#007bff", '&:hover': { backgroundColor: '#0056b3' } }}
         >
-          Add Reminder
+          {editingReminder ? "Save Reminder" : "Add Reminder"}
         </Button>
       </Box>
 
-      <Typography variant="h6" sx={{ color: "white" }}>Reminders</Typography>
+      <Box sx={{ marginBottom: "20px", '& .react-calendar': { backgroundColor: '#1c1c1c', borderRadius: '8px' }, '& .react-calendar__tile': { color: 'white' }, '& .react-calendar__tile--active': { backgroundColor: '#007bff', color: 'white' }, '& .react-calendar__tile--highlighted': { backgroundColor: '#0056b3', color: 'white' } }}>
+        <Calendar
+          onChange={handleDateChange}
+          value={selectedDate}
+          tileClassName={({ date }) => date.toDateString() === selectedDate.toDateString() ? 'highlight' : undefined}
+        />
+      </Box>
+
+      <Typography variant="h6" sx={{ color: "lightgray" }}>Reminders for {selectedDate.toDateString()}</Typography>
       <List>
-        {reminders.map((reminder, index) => (
-          <ListItem key={index} sx={{ backgroundColor: "white", marginBottom: "10px", borderRadius: "4px" }}>
-            <ListItemText
-              primary={`${reminder.name} (${reminder.type})`}
-              secondary={`Every ${reminder.interval}`}
+        {reminders.map((reminder) => (
+          <ListItem key={reminder.id} sx={{ backgroundColor: "#2a2a2a", marginBottom: "10px", borderRadius: "4px", padding: "10px" }}>
+    
+            <ListItemText 
+              primary={`${reminder.name} (${reminder.type})`} 
+              secondary={`Time: ${reminder.time}`} 
             />
+            <IconButton edge="end" color="inherit" onClick={() => handleEditReminder(reminder)}>
+              <i className="fas fa-edit"><MdEdit /></i>
+            </IconButton>
+            <IconButton edge="end" color="inherit" onClick={() => handleDeleteReminder(reminder.id)}>
+              <i className="fas fa-trash"><RiDeleteBin5Fill /></i>
+            </IconButton>
           </ListItem>
         ))}
       </List>
+
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={() => setOpenSnackbar(false)}
+        message="Action successful"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      />
     </Box>
   );
 }
