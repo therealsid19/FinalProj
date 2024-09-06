@@ -13,7 +13,7 @@ export default function Dashboard() {
   const [map, setMap] = useState(null);
   const [location, setLocation] = useState(null);
   const [clinics, setClinics] = useState([]);
-  const [selectedClinic, setSelectedClinic] = useState(null); // State for selected clinic
+  const [selectedClinic, setSelectedClinic] = useState(null);
 
   const handleMapLoad = (mapInstance) => {
     setMap(mapInstance);

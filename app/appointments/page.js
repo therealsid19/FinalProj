@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel, List, ListItem, ListItemText, IconButton, Snackbar } from "@mui/material";
 import { useUser } from '@clerk/nextjs';
-import Calendar from 'react-calendar'; // Ensure react-calendar is installed
-import { deleteReminder, getReminders, addReminder, updateReminder } from '@/lib/reminders'; // Ensure these functions are defined
+import Calendar from 'react-calendar';
+import { deleteReminder, getReminders, addReminder, updateReminder } from '@/lib/reminders';
 import NavBar from "../components/NavBar";
 import { MdEdit } from "react-icons/md";
 import { RiDeleteBin5Fill } from "react-icons/ri";
@@ -20,7 +20,6 @@ export default function MedicalReminders() {
   const { user } = useUser();
 
   useEffect(() => {
-    console.log('Selected Date:', selectedDate); // Debug log
     if (user && selectedDate) {
       getReminders(user.id, selectedDate).then(setReminders);
     }
@@ -61,7 +60,7 @@ export default function MedicalReminders() {
         name: medicineName,
         type: medicineType,
         time: `${time} ${amPm}`,
-        date: selectedDate.toISOString().split('T')[0], // Store date in YYYY-MM-DD format
+        date: selectedDate.toISOString().split('T')[0],
       };
       const userEmail = user.emailAddresses[0]['emailAddress'];
       const reminder = await updateReminder(user.id, updatedReminder, userEmail);

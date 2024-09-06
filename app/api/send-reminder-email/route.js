@@ -1,4 +1,4 @@
-// app/api/send-reminder-email/route.js
+
 import sgMail from '@sendgrid/mail';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -9,7 +9,7 @@ export async function POST(req) {
 
     const msg = {
       to,
-      from: process.env.SENDGRID_VERIFIED_SENDER, // Ensure this sender is verified in SendGrid settings
+      from: process.env.SENDGRID_VERIFIED_SENDER,
       subject: isReminderNotification 
                ? `Reminder: Medication for ${reminder.name} in 10 Minutes` 
                : 'New Medical Reminder Added',

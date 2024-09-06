@@ -21,7 +21,7 @@ export default function SignInPage() {
               colorTextOnPrimaryBackground: "#fff",
             },
           }}
-          // Enable Google OAuth and Email/Password Sign-In
+          
           additionalSignInOptions={[
             {
               provider: "oauth_google",
