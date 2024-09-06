@@ -34,7 +34,8 @@ export default function MedicalReminders() {
         time: `${time} ${amPm}`,
         date: selectedDate.toISOString().split('T')[0], // Store date in YYYY-MM-DD format
       };
-      const reminder = await addReminder(user.id, newReminder);
+      const userEmail = user.emailAddresses[0]['emailAddress'];
+      const reminder = await addReminder(user.id, newReminder, userEmail);
       setReminders([...reminders, reminder]);
       setMedicineName("");
       setMedicineType("");
@@ -62,8 +63,8 @@ export default function MedicalReminders() {
         time: `${time} ${amPm}`,
         date: selectedDate.toISOString().split('T')[0], // Store date in YYYY-MM-DD format
       };
-
-      const reminder = await updateReminder(user.id, updatedReminder);
+      const userEmail = user.emailAddresses[0]['emailAddress'];
+      const reminder = await updateReminder(user.id, updatedReminder, userEmail);
       setReminders(reminders.map(rem => (rem.id === reminder.id ? reminder : rem)));
       setMedicineName("");
       setMedicineType("");
