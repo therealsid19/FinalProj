@@ -60,13 +60,25 @@ export default function HomePage() {
                             <Typography variant="h5" paragraph>
                                 Your AI-powered healthcare assistant. Get instant medical advice, find nearby clinics, and take control of your health with ease.
                             </Typography>
-                            <Button variant="contained" color="secondary" size="large">
-                                Get Started
-                            </Button>
+                            <SignedOut>
+                <SignInButton mode="modal">
+                  <Button variant="contained" color="secondary">
+                    Sign In
+                  </Button>
+                </SignInButton>
+              </SignedOut>
+              <SignedIn>
+              <Button variant="contained" color="secondary" href='/dashboard'>
+                    Get Started
+                  </Button>
+              </SignedIn>
+                            
                         </Grid>
                     </Grid>
                 </Container>
             </Box>
+
+            
 
             {/* Features Section */}
             <Box

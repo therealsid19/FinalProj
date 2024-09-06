@@ -110,7 +110,9 @@ export default function NavBar() {
             MediBot
           </Typography>
           <SignedOut>
+          <SignInButton mode="modal">
             <Button color="inherit">Login</Button>
+            </SignInButton>
           </SignedOut>
           <SignedIn>
             <Box sx={{ paddingRight: '16px' }}>
