@@ -5,13 +5,17 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export async function POST(req) {
   try {
-    const { to, reminder } = await req.json();
+    const { to, reminder, isReminderNotification } = await req.json();
 
     const msg = {
       to,
-      from: process.env.SENDGRID_VERIFIED_SENDER, // Verify this sender in SendGrid settings
-      subject: 'New Medical Reminder Added',
-      text: `You have added a new reminder for ${reminder.name} (${reminder.type}) at ${reminder.time} on ${reminder.date}.`,
+      from: process.env.SENDGRID_VERIFIED_SENDER, // Ensure this sender is verified in SendGrid settings
+      subject: isReminderNotification 
+               ? `Reminder: Medication for ${reminder.name} in 10 Minutes` 
+               : 'New Medical Reminder Added',
+      text: isReminderNotification 
+            ? `This is a friendly reminder that your medication for ${reminder.name} (${reminder.type}) is scheduled at ${reminder.time} on ${reminder.date}. Please take it on time.` 
+            : `You have added a new reminder for ${reminder.name} (${reminder.type}) at ${reminder.time} on ${reminder.date}.`,
     };
 
     await sgMail.send(msg);
