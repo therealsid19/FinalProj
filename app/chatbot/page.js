@@ -2,10 +2,16 @@
 
 import Image from "next/image";
 import styles from '../page.module.css';
-import { useState } from "react";
-import { Box, Button, Stack, TextField } from "@mui/material";
+import { Box, Button, Stack, TextField, InputAdornment } from "@mui/material";
+import MicIcon from '@mui/icons-material/Mic';
+import Navbar from '../components/NavBar';
+import { useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
+import FOG from 'vanta/dist/vanta.fog.min';
 
 export default function Chatbot() {
+    const [vantaEffect, setVantaEffect] = useState(null);
+    const vantaRef = useRef(null);
     const [messages, setMessages] = useState([
         {
             role: "assistant",
@@ -13,6 +19,34 @@ export default function Chatbot() {
         }
     ]);
     const [message, setMessage] = useState('');
+    const [isListening, setIsListening] = useState(false);
+
+    useEffect(() => {
+        if (!vantaEffect) {
+            setVantaEffect(
+                FOG({
+                    el: vantaRef.current, // Attach Vanta effect to the container
+                    THREE, // Pass the THREE.js instance
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    highlightColor: 0x29ff,
+                    midtoneColor: 0x2382da,
+                    lowlightColor: 0xa1ff,
+                    baseColor: 0xa2ccd7,
+                    blurFactor: 0.72,
+                    speed: 1.40,
+                    zoom: 0.50,
+                })
+            );
+        }
+
+        return () => {
+            if (vantaEffect) vantaEffect.destroy();
+        };
+    }, [vantaEffect]);
 
     const sendMessage = async () => {
         setMessages((messages) => [
@@ -33,6 +67,8 @@ export default function Chatbot() {
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
 
+        
+
         let result = '';
         reader.read().then(function processText({ done, value }) {
             if (done) {
@@ -51,23 +87,65 @@ export default function Chatbot() {
         });
     };
 
+    // Function to handle voice input
+    const handleVoiceInput = () => {
+        if (!('webkitSpeechRecognition' in window)) {
+            alert('Speech recognition is not supported in this browser.');
+            return;
+        }
+
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.onstart = () => {
+            setIsListening(true);
+        };
+
+        recognition.onresult = (event) => {
+            const speechResult = event.results[0][0].transcript;
+            setMessage(speechResult);
+            setIsListening(false);
+        };
+
+        recognition.onerror = (event) => {
+            console.error('Speech recognition error:', event.error);
+            setIsListening(false);
+        };
+
+        recognition.onend = () => {
+            setIsListening(false);
+        };
+
+        recognition.start();
+    };
+
     return (
+        <>
+        <Navbar />
         <Box
-            width="100vw"
-            height="100vh"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
+            ref={vantaRef} // Attach Vanta.js effect here
+            sx={{
+                width: "100vw",
+                height: "100vh",
+                position: 'relative', // Ensure Vanta.js covers the whole page
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                overflow: 'hidden',
+            }}
         >
             <Stack
                 direction="column"
-                width="500px"
+                width="700px"
                 height="700px"
                 border="1px solid white"
                 p={2}
                 spacing={3}
                 bgcolor={"white"}
+                borderRadius={4}
             >
                 <Stack
                     direction="column"
@@ -102,6 +180,15 @@ export default function Chatbot() {
                         fullWidth
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <Button onClick={handleVoiceInput} disabled={isListening}>
+                                        <MicIcon />
+                                    </Button>
+                                </InputAdornment>
+                            )
+                        }}
                     />
                     <Button variant="contained" onClick={sendMessage}>
                         Send
@@ -109,5 +196,6 @@ export default function Chatbot() {
                 </Stack>
             </Stack>
         </Box>
+        </>
     );
 }
