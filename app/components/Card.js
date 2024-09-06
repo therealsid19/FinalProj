@@ -13,7 +13,7 @@ function Card({ text, index }) {
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: '8px',
-        background: index % 2 === 0 ? '#db9442' : '#eba85b',
+        background: index % 2 === 0 ? '#0b3663' : '#275f9c',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         margin: '20px 0',
         padding: '20px',

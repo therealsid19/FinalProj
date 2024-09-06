@@ -50,7 +50,7 @@ function FeedbackForm() {
         type="submit" 
         disabled={state.submitting}
         variant="contained"
-        color="primary"
+        color="secondary"
         sx={{ mt: 2 }}
         >
         Submit

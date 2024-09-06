@@ -97,9 +97,9 @@ export default function HomePage() {
             
 
             {/* Feedback Section */}
-            <Box sx={{ py: 5, background: '#f0dbaf' }}>
+            <Box sx={{ py: 5, background: '#1c344f' }}>
                 <Container>
-                    <Typography variant="h4" align="center" color='black' gutterBottom>
+                    <Typography variant="h4" align="center" color='white' gutterBottom>
                         We Value Your Feedback
                     </Typography>
                     <Box sx={{ maxWidth: '600px', margin: '0 auto' }}>
@@ -107,99 +107,9 @@ export default function HomePage() {
                     </Box>
                 </Container>
             </Box>
+            <Typography variant='body2' align='center' sx={{ fontSize: '0.875rem' }}>
+              MediBot | Copyright @ 2024
+            </Typography>
         </>
-
-    // <div className={styles.container}>
-    //   <Navbar />
-      
-    //   {/* Hero Section */}
-    //   <section className={styles.hero}>
-    //     <h1 className={styles.title}>Your Health, Simplified</h1>
-    //     <p className={styles.subtitle}>Login to access personalized healthcare features.</p>
-    //   </section>
-    //   <SignedOut >
-    //   <Box sx={{
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',    
-    //     height: '90vh',          
-    //     flexDirection: 'column',  
-    //     textAlign: 'center',      
-    //   }}>
-  
-    //     <Box
-    //       sx={{
-    //         display: 'flex',
-    //         justifyContent: 'center',
-    //         alignItems: 'center',
-    //         width: '100%',
-    //         maxWidth: '300px',
-    //         padding: '20px',
-    //         borderRadius: '10px',
-    //         textAlign: 'center',
-    //         marginBottom: '50px',
-    //       }}
-    //     >
-    //       <SignIn
-    //         routing="hash"
-    //         redirectUrl="/"
-    //         appearance={{
-    //           variables: {
-    //             colorPrimary: "#1E90FF",
-    //           },
-
-    //         }}
-    //       />
-    //     </Box>
-    //   </Box>
-    //   </SignedOut>
-    //   <SignedIn>
-    //     <Box sx ={{
-    //       display: 'flex',
-    //       justifyContent: 'center',
-    //       alignItems: 'center',    
-    //       height: '20vh',          
-    //       flexDirection: 'column',  
-    //       textAlign: 'center',    
-    //     }}>
-    //     <Button
-    //       variant="contained"
-    //       color="primary"
-    //       sx={{
-        
-    //         fontSize: { xs: '14px', sm: '16px' },
-    //       }}
-    //       href = "/dashboard"
-    //     >
-    //       Go to Nearest Clinic
-    //     </Button>
-    //     </Box>
-    //   </SignedIn>
-      
-      
-
-
-    //   {/* Features Section */}
-    //   <section className={styles.features}>
-    //     <div className={styles.card}>
-    //       <FaClinicMedical className={styles.icon} />
-    //       <h3 className={styles.cardTitle}>Nearest Clinics</h3>
-    //       <p className={styles.cardDescription}>Find clinics near you with ease.</p>
-    //     </div>
-    //     <div className={styles.card}>
-    //       <FaCalendarAlt className={styles.icon} />
-    //       <h3 className={styles.cardTitle}>Medicine Reminders</h3>
-    //       <p className={styles.cardDescription}>Never miss a dose with our reminders.</p>
-    //     </div>
-    //     <div className={styles.card}>
-    //       <FaRobot className={styles.icon} />
-    //       <h3 className={styles.cardTitle}>Medical Chatbot</h3>
-    //       <p className={styles.cardDescription}>Get instant medical advice 24/7.</p>
-    //       <Link href="/chatbot" className={styles.chatbotButton}>
-    //         Start Chat
-    //       </Link>
-    //     </div>
-    //   </section>
-    // </div>
   );
 }
