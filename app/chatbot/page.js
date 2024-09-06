@@ -8,6 +8,7 @@ import Navbar from '../components/NavBar';
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import FOG from 'vanta/dist/vanta.fog.min';
+import ReactMarkdown from 'react-markdown';
 
 export default function Chatbot() {
     const [vantaEffect, setVantaEffect] = useState(null);
@@ -166,7 +167,7 @@ export default function Chatbot() {
                                 borderRadius={16}
                                 p={3}
                             >
-                                {message.content}
+                                <ReactMarkdown>{message.content}</ReactMarkdown>
                             </Box>
                         </Box>
                     ))}
