@@ -45,7 +45,7 @@ export default function NavBar() {
 
   const drawerList = () => (
     <Box
-      sx={{ width: 250 }}
+      sx={{ width: 250, background: '#2162bf', height: '100vh', color: 'white' }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
@@ -63,26 +63,26 @@ export default function NavBar() {
       </Box>
       <ListItem button onClick={() => handleNavigation('/')}>
         <ListItemIcon>
-          <HomeIcon />
+          <HomeIcon sx={{ color: 'white'}}/>
         </ListItemIcon>
         <ListItemText primary="Home" />
       </ListItem>
       <SignedIn>
         <ListItem button onClick={() => handleNavigation('/dashboard')}>
           <ListItemIcon>
-            <DashboardIcon />
+            <DashboardIcon sx={{ color: 'white'}}/>
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItem>
         <ListItem button onClick={() => handleNavigation('/appointments')}>
           <ListItemIcon>
-            <EventIcon />
+            <EventIcon sx={{ color: 'white'}}/> 
           </ListItemIcon>
           <ListItemText primary="Appointments" />
         </ListItem>
         <ListItem button onClick={() => handleNavigation('/chatbot')}>
           <ListItemIcon>
-            <ChatIcon />
+            <ChatIcon sx={{ color: 'white'}}/>
           </ListItemIcon>
           <ListItemText primary="Chatbot" />
         </ListItem>

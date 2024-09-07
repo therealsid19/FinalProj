@@ -17,7 +17,8 @@ import {
   SignedOut,
   SignIn,
   UserButton
-} from '@clerk/nextjs'
+} from '@clerk/nextjs';
+import './globals.css';
 
 const items = [
   "AI Powered chatbot capable of diagnosing your illness based on your symptoms", 

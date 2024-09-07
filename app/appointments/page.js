@@ -7,6 +7,9 @@ import { deleteReminder, getReminders, addReminder, updateReminder } from '@/lib
 import NavBar from "../components/NavBar";
 import { MdEdit } from "react-icons/md";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import 'react-calendar/dist/Calendar.css'; // Import default calendar styles
+import './react-calendar.css';
+import { color } from "framer-motion";
 
 export default function MedicalReminders() {
   const [reminders, setReminders] = useState([]);
@@ -85,13 +88,22 @@ export default function MedicalReminders() {
   };
 
   return (
-    <Box sx={{ backgroundColor: "black", color: "white", padding: "5px", borderRadius: "8px" }}>
+    <Box sx={{ background:'linear-gradient(180deg, #0c4ca6, #1c68d4, #2b8fd6, #30b4cf)', color: "white"}}>
       <NavBar />
-      <Typography variant="h4" gutterBottom sx={{ color: "lightgray" }}>
+      <Box sx={{ padding: '5px'}}>
+      <Typography variant="h4" gutterBottom sx={{ color: "#E0E0E0", textAlign: "center", marginBottom: "30px", marginTop: '20px' }}>
         Medical Reminders
       </Typography>
 
-      <Box sx={{ marginBottom: "20px", padding: "10px", backgroundColor: "#1c1c1c", borderRadius: "8px" }}>
+      <Box sx={{ 
+        marginBottom: "30px", 
+        padding: "20px", 
+        backgroundColor: "rgba(0, 0, 0, 0.5)", 
+        borderRadius: "8px", 
+        display: "flex", 
+        flexWrap: "wrap",  
+        gap: "5px",  
+        justifyContent: "space-between"  }}>
         <TextField
           label="Medicine Name"
           value={medicineName}
@@ -121,7 +133,7 @@ export default function MedicalReminders() {
         />
 
         <FormControl sx={{ minWidth: "120px", backgroundColor: "white", borderRadius: "4px", marginBottom: "10px" }}>
-          <InputLabel>AM/PM</InputLabel>
+         
           <Select
             value={amPm}
             onChange={(e) => setAmPm(e.target.value)}
@@ -140,33 +152,71 @@ export default function MedicalReminders() {
           {editingReminder ? "Save Reminder" : "Add Reminder"}
         </Button>
       </Box>
-
-      <Box sx={{ marginBottom: "20px", '& .react-calendar': { backgroundColor: '#1c1c1c', borderRadius: '8px' }, '& .react-calendar__tile': { color: 'white' }, '& .react-calendar__tile--active': { backgroundColor: '#007bff', color: 'white' }, '& .react-calendar__tile--highlighted': { backgroundColor: '#0056b3', color: 'white' } }}>
-        <Calendar
-          onChange={handleDateChange}
-          value={selectedDate}
-          tileClassName={({ date }) => date.toDateString() === selectedDate.toDateString() ? 'highlight' : undefined}
-        />
-      </Box>
-
-      <Typography variant="h6" sx={{ color: "lightgray" }}>Reminders for {selectedDate.toDateString()}</Typography>
-      <List>
-        {reminders.map((reminder) => (
-          <ListItem key={reminder.id} sx={{ backgroundColor: "#2a2a2a", marginBottom: "10px", borderRadius: "4px", padding: "10px" }}>
     
-            <ListItemText 
-              primary={`${reminder.name} (${reminder.type})`} 
-              secondary={`Time: ${reminder.time}`} 
+      <Box
+        sx={{
+            display: "flex", 
+            justifyContent: "space-between",
+            marginBottom: "20px",
+            padding: "10px",
+            borderRadius: "8px",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            }}
+        >
+        <Box sx={{ flex: 1, marginRight: "20px" }}>
+            <Calendar
+            onChange={handleDateChange}
+            value={selectedDate}
+            className="react-calendar"
+            tileClassName={({ date }) =>
+                date.toDateString() === selectedDate.toDateString() ? 'highlight' : undefined
+            }
             />
-            <IconButton edge="end" color="inherit" onClick={() => handleEditReminder(reminder)}>
-              <i className="fas fa-edit"><MdEdit /></i>
-            </IconButton>
-            <IconButton edge="end" color="inherit" onClick={() => handleDeleteReminder(reminder.id)}>
-              <i className="fas fa-trash"><RiDeleteBin5Fill /></i>
-            </IconButton>
-          </ListItem>
-        ))}
-      </List>
+        </Box>
+
+        <Box sx={{ flex: 2 }}>
+            <Typography variant="h6" sx={{ color: "lightgray" }}>
+            Reminders for {selectedDate.toDateString()}
+            </Typography>
+            <List>
+            {reminders.map((reminder) => (
+                <ListItem
+                key={reminder.id}
+                sx={{
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    marginBottom: "10px",
+                    borderRadius: "4px",
+                    padding: "10px",
+                }}
+                >
+                <ListItemText
+                    primary={`${reminder.name} (${reminder.type})`}
+                    secondary={`Time: ${reminder.time}`}
+                    sx={{
+                        '& .MuiListItemText-secondary': {
+                        color: 'white', 
+                        },
+                    }}
+                />
+                <IconButton
+                    edge="end"
+                    color="inherit"
+                    onClick={() => handleEditReminder(reminder)}
+                >
+                    <MdEdit />
+                </IconButton>
+                <IconButton
+                    edge="end"
+                    color="inherit"
+                    onClick={() => handleDeleteReminder(reminder.id)}
+                >
+                    <RiDeleteBin5Fill />
+                </IconButton>
+                </ListItem>
+            ))}
+            </List>
+        </Box>
+        </Box>
 
       <Snackbar
         open={openSnackbar}
@@ -175,6 +225,7 @@ export default function MedicalReminders() {
         message="Action successful"
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       />
+    </Box>
     </Box>
   );
 }
