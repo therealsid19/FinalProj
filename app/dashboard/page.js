@@ -13,7 +13,7 @@ export default function Dashboard() {
   const [map, setMap] = useState(null);
   const [location, setLocation] = useState(null);
   const [clinics, setClinics] = useState([]);
-  const [selectedClinic, setSelectedClinic] = useState(null); // State for selected clinic
+  const [selectedClinic, setSelectedClinic] = useState(null);
 
   const handleMapLoad = (mapInstance) => {
     setMap(mapInstance);
@@ -62,12 +62,14 @@ export default function Dashboard() {
   }, [map]);
 
   return (
-    <Box>
+    <Box
+      sx={{background: 'linear-gradient(180deg, #0c4ca6, #1c68d4, #2b8fd6, #30b4cf)', height: '120vh', color: 'white'}}
+    >
       <Box>
         <Nav />
       </Box>
 
-      <Typography variant="h5" sx={{ margin: '20px 0' }}>
+      <Typography variant="h4" sx={{ margin: '20px 0', marginLeft: '15px', color: "#E0E0E0", textAlign: "center"}}>
         Nearest Clinics and Hospitals
       </Typography>
 
