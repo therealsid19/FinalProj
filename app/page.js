@@ -39,7 +39,7 @@ export default function HomePage() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    height: '95vh',
+                    height: '100%',
                     background: 'linear-gradient(180deg, #0c4ca6, #1c68d4, #2b8fd6, #30b4cf)',
                     color: 'white',
                     textAlign: 'center',
