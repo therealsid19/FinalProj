@@ -24,8 +24,9 @@ MedHub is a healthcare assistant web application that helps users find nearby cl
 ### Prerequisites
 
 - Node.js
-- Firebase account (for authentication and database)
-- Google Cloud API Key (for Maps and Email services)
+- Clerk and Firebase account (for authentication and database)
+- Google Cloud API Key (for Maps services)
+- SendGrid API Key (for Email services)
 
 ### Installation
 
@@ -48,8 +49,10 @@ MedHub is a healthcare assistant web application that helps users find nearby cl
 6. Create a `.env` file for your environment variables:
 
 ```bash
-   REACT_APP_GOOGLE_MAPS_API_KEY=your-google-maps-api-key
-   REACT_APP_FIREBASE_API_KEY=your-firebase-api-key
+   CLERK_SECRET_KEY=your-clerk-secret-key
+   NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-google-maps-api-key
+   NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key
+   SENDGRID_API_KEY=your-sendgrid-api-key
 ```
 
 7. Start the development server:
@@ -84,4 +87,4 @@ The MedHub interface is designed with simplicity in mind, providing an intuitive
 
 For more information, feel free to contact us at:
 
-- Website: [https://medhub.com](https://final-proj-five.vercel.app/)
+- Website: [https://final-proj-five.vercel.app/](https://final-proj-five.vercel.app/)
