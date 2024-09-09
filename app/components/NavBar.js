@@ -12,7 +12,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import PlaceIcon from '@mui/icons-material/Place';
 import EventIcon from '@mui/icons-material/Event';
 import HomeIcon from '@mui/icons-material/Home';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -68,11 +68,11 @@ export default function NavBar() {
         <ListItemText primary="Home" />
       </ListItem>
       <SignedIn>
-        <ListItem button onClick={() => handleNavigation('/dashboard')}>
+        <ListItem button onClick={() => handleNavigation('/maps')}>
           <ListItemIcon>
-            <DashboardIcon sx={{ color: 'white'}}/>
+            <PlaceIcon sx={{ color: 'white'}}/>
           </ListItemIcon>
-          <ListItemText primary="Maps" />
+          <ListItemText primary="Nearest Clinics" />
         </ListItem>
         <ListItem button onClick={() => handleNavigation('/appointments')}>
           <ListItemIcon>

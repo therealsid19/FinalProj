@@ -79,7 +79,7 @@ export default function HomePage() {
                               </SignInButton>
                             </SignedOut>
                             <SignedIn>
-                              <Button variant="contained" color="secondary" href='/dashboard'>
+                              <Button variant="contained" color="secondary" href='/maps'>
                                     Get Started
                                   </Button>
                             </SignedIn>
@@ -127,7 +127,7 @@ export default function HomePage() {
                       </Box>
                     </Grid>
                     <Grid item xs={12} md={6} justifyContent={"center"}>
-                      <Card text={items[0].text} index={0} />
+                      <Card text={items[0].text} index={0}/>
                     </Grid>
                   </Grid>
 
@@ -186,10 +186,11 @@ export default function HomePage() {
                         <FeedbackForm />
                     </Box>
                 </Container>
-            </Box>
+            
             <Typography variant='body2' align='center' sx={{ fontSize: '0.875rem' }}>
               MedHub | Copyright @ 2024
             </Typography>
+            </Box>
         </>
   );
 }
