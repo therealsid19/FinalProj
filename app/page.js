@@ -123,7 +123,7 @@ export default function HomePage() {
                           mb: 2 // Margin bottom to separate from the card
                         }}
                       >
-                        <Image src={items[0].imgSrc} alt="Feature Image 1" layout="responsive" width={500} height={500} />
+                        <Image src={items[0].imgSrc} alt="Feature Image 1" width={500} height={250} />
                       </Box>
                     </Grid>
                     <Grid item xs={12} md={6} justifyContent={"center"}>
@@ -143,7 +143,7 @@ export default function HomePage() {
                           mb: 2 // Margin bottom to separate from the card
                         }}
                       >
-                        <Image src={items[1].imgSrc} alt="Feature Image 2" layout="responsive" width={500} height={500} />
+                        <Image src={items[1].imgSrc} alt="Feature Image 2" width={500} height={250} />
                       </Box>
                     </Grid>
                     <Grid item xs={12} md={6} justifyContent={"center"}>
@@ -164,7 +164,7 @@ export default function HomePage() {
                           justifyContent:"center",
                         }}
                       >
-                        <Image src={items[2].imgSrc} alt="Feature Image 3" layout="responsive" width={500} height={500} />
+                        <Image src={items[2].imgSrc} alt="Feature Image 3" width={500} height={250} />
                       </Box>
                     </Grid>
                     <Grid item xs={12} md={6} justifyContent={"center"}>
