@@ -12,7 +12,7 @@ const containerStyle = {
   height: '440px'
 };
 
-export default function Dashboard() {
+export default function Maps() {
   const [map, setMap] = useState(null);
   const [location, setLocation] = useState(null);
   const [clinics, setClinics] = useState([]);

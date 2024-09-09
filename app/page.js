@@ -22,7 +22,7 @@ import './globals.css';
 
 const items = [
   {
-    text: "AI Powered chatbot capable of diagnosing your illness based on your symptoms and provides clinic recommendations based on your location.",
+    text: "AI Powered chatbot capable of diagnosing your illness and provides clinic recommendations based on your location.",
     imgSrc: "/chatbot.jpeg"
   },
   {
