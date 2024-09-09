@@ -78,7 +78,7 @@ export default function NavBar() {
           <ListItemIcon>
             <EventIcon sx={{ color: 'white'}}/> 
           </ListItemIcon>
-          <ListItemText primary="Appointments" />
+          <ListItemText primary="Medication" />
         </ListItem>
         <ListItem button onClick={() => handleNavigation('/chatbot')}>
           <ListItemIcon>
@@ -107,7 +107,7 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            MediBot
+            MedHub
           </Typography>
           <SignedOut>
           <SignInButton mode="modal">

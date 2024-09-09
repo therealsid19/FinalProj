@@ -1,8 +1,11 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { Box, Typography } from '@mui/material';
 import Nav from '../components/NavBar';
+import * as THREE from 'three';
+import FOG from 'vanta/dist/vanta.fog.min';
+import ReactMarkdown from 'react-markdown';
 
 const containerStyle = {
   width: '100%',
@@ -14,6 +17,8 @@ export default function Dashboard() {
   const [location, setLocation] = useState(null);
   const [clinics, setClinics] = useState([]);
   const [selectedClinic, setSelectedClinic] = useState(null);
+  const [vantaEffect, setVantaEffect] = useState(null);
+  const vantaRef = useRef(null);
 
   const handleMapLoad = (mapInstance) => {
     setMap(mapInstance);
@@ -41,6 +46,33 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
+    if (!vantaEffect) {
+      setVantaEffect(
+          FOG({
+              el: vantaRef.current, // Attach Vanta effect to the container
+              THREE, // Pass the THREE.js instance
+              mouseControls: true,
+              touchControls: true,
+              gyroControls: false,
+              minHeight: 200.00,
+              minWidth: 200.00,
+              highlightColor: 0x29ff,
+              midtoneColor: 0x2382da,
+              lowlightColor: 0xa1ff,
+              baseColor: 0xa2ccd7,
+              blurFactor: 0.72,
+              speed: 1.40,
+              zoom: 0.50,
+          })
+      );
+    }
+
+    return () => {
+        if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
+
+  useEffect(() => {
     // Get user's current location
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -62,18 +94,16 @@ export default function Dashboard() {
   }, [map]);
 
   return (
-    <Box
-      sx={{background: 'linear-gradient(180deg, #0c4ca6, #1c68d4, #2b8fd6, #30b4cf)', height: '120vh', color: 'white'}}
-    >
+    <Box ref={vantaRef} sx={{ height: '120vh', color: 'white' }}>
       <Box>
         <Nav />
       </Box>
 
       <Typography variant="h4" sx={{ margin: '20px 0', marginLeft: '15px', color: "#E0E0E0", textAlign: "center"}}>
-        Nearest Clinics and Hospitals
+        Find Your Nearest Clinics and Hospitals
       </Typography>
 
-      <Box sx={{ padding: '20px' }}>
+      <Box sx={{ padding: '20px'}}>
         <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY} libraries={['places']}>
           <GoogleMap
             mapContainerStyle={containerStyle}
@@ -101,8 +131,8 @@ export default function Dashboard() {
                 }}
                 onCloseClick={() => setSelectedClinic(null)} // Close the InfoWindow
               >
-                <div style={{ padding: '5px', maxWidth: '200px', maxHeight: '200px' }}>
-      <Typography variant="h6" gutterBottom>
+                <div style={{ padding: '5px', maxWidth: '200px', maxHeight: '100%' }}>
+      <Typography variant="h6" color={'darkBlue'} gutterBottom>
         {selectedClinic.name}
       </Typography>
       <Typography variant="body2" color="textSecondary">
@@ -113,6 +143,17 @@ export default function Dashboard() {
           Rating: {selectedClinic.rating} / 5
         </Typography>
       )}
+      <Typography variant="body2" color="primary">
+        <a 
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedClinic.name)}`} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          style={{ textDecoration: 'none', color: '#1c68d4' }}
+        >
+          View on Google Maps
+        </a>
+      </Typography>
+
     </div>
               </InfoWindow>
             )}

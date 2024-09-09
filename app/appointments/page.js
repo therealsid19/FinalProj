@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Box, Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel, List, ListItem, ListItemText, IconButton, Snackbar } from "@mui/material";
 import { useUser } from '@clerk/nextjs';
 import Calendar from 'react-calendar';
@@ -10,8 +10,13 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import 'react-calendar/dist/Calendar.css'; // Import default calendar styles
 import './react-calendar.css';
 import { color } from "framer-motion";
+import * as THREE from 'three';
+import FOG from 'vanta/dist/vanta.fog.min';
+import ReactMarkdown from 'react-markdown';
 
 export default function MedicalReminders() {
+  const [vantaEffect, setVantaEffect] = useState(null);
+  const vantaRef = useRef(null);
   const [reminders, setReminders] = useState([]);
   const [medicineName, setMedicineName] = useState("");
   const [medicineType, setMedicineType] = useState("");
@@ -76,6 +81,32 @@ export default function MedicalReminders() {
       setOpenSnackbar(true);
     }
   };
+  useEffect(() => {
+    if (!vantaEffect) {
+      setVantaEffect(
+          FOG({
+              el: vantaRef.current, // Attach Vanta effect to the container
+              THREE, // Pass the THREE.js instance
+              mouseControls: true,
+              touchControls: true,
+              gyroControls: false,
+              minHeight: 200.00,
+              minWidth: 200.00,
+              highlightColor: 0x29ff,
+              midtoneColor: 0x2382da,
+              lowlightColor: 0xa1ff,
+              baseColor: 0xa2ccd7,
+              blurFactor: 0.72,
+              speed: 1.40,
+              zoom: 0.50,
+          })
+      );
+    }
+
+    return () => {
+        if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
 
   const handleDeleteReminder = async (id) => {
     await deleteReminder(user.id, selectedDate, id);
@@ -88,7 +119,7 @@ export default function MedicalReminders() {
   };
 
   return (
-    <Box sx={{ background:'linear-gradient(180deg, #0c4ca6, #1c68d4, #2b8fd6, #30b4cf)', color: "white"}}>
+    <Box ref={vantaRef} sx={{ height: '120vh', color: 'white' }}>
       <NavBar />
       <Box sx={{ padding: '5px'}}>
       <Typography variant="h4" gutterBottom sx={{ color: "#E0E0E0", textAlign: "center", marginBottom: "30px", marginTop: '20px' }}>

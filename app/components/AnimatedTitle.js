@@ -21,7 +21,7 @@ const Character = styled(motion.span)`
 `;
 
 export default function AnimatedTitle() {
-  const text = 'Welcome to MediBot' // This would normally be passed into this component as a prop!
+  const text = 'Welcome to MedHub' // This would normally be passed into this component as a prop!
   
   const ctrls = useAnimation();
   

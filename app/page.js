@@ -21,10 +21,20 @@ import {
 import './globals.css';
 
 const items = [
-  "AI Powered chatbot capable of diagnosing your illness based on your symptoms", 
-  "Provides personalized Clinic Recommendations based on your location and requirement", 
-  "Timely Medication Remainder", 
-  ];
+  {
+    text: "AI Powered chatbot capable of diagnosing your illness based on your symptoms and provides clinic recommendations based on your location.",
+    imgSrc: "/chatbot.jpeg"
+  },
+  {
+    text: "Find the nearest healthcare providers effortlessly with our interactive Google Map integration!",
+    imgSrc: "/maps.jpeg"
+  },
+  {
+    text: "Stay on track with automated email reminders for your medications—never miss a dose!",
+    imgSrc: "/rem3.jpg"
+  }
+];
+
 
 
 export default function HomePage() {
@@ -93,18 +103,75 @@ export default function HomePage() {
                 background: '#d3e1eb',
                 padding: '50px 0',
                 color: 'white',
+                textAlign: 'center'
               }}
             >
-              <Container>
+              <Container sx={{alignItems: 'center'}}>
                 <Typography variant="h3" align="center" mb={5} color={"#2c3f4d"}>
                   Features
                 </Typography>
+                <Grid container spacing={4} justifyContent={"center"}>
+                  {/* Feature 1 */}
+                  <Grid container item xs={12} key={0} alignItems="center" flexDirection="row" justifyContent="center">
+                    <Grid item xs={12} md={6} justifyContent={"center"}>
+                      <Box
+                        sx={{
+                          width: '70%',
+                          height: '70%',
+                          borderRadius: '5%',
+                          overflow: 'hidden',
+                          mb: 2 // Margin bottom to separate from the card
+                        }}
+                      >
+                        <Image src={items[0].imgSrc} alt="Feature Image 1" layout="responsive" width={500} height={500} />
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12} md={6} justifyContent={"center"}>
+                      <Card text={items[0].text} index={0} />
+                    </Grid>
+                  </Grid>
 
-                <div className="Features" align="center">
-                  {items.map((item, i) => (
-                    <Card key={i} text={item} index={i} />
-                  ))}
-                </div>
+                  {/* Feature 2 */}
+                  <Grid container item xs={12} key={1} alignItems="center" flexDirection="row-reverse" justifyContent={"center"}>
+                    <Grid item xs={12} md={6} justifyContent={"center"}>
+                      <Box
+                        sx={{
+                          width: '70%',
+                          height: 'auto',
+                          borderRadius: '5%',
+                          overflow: 'hidden',
+                          mb: 2 // Margin bottom to separate from the card
+                        }}
+                      >
+                        <Image src={items[1].imgSrc} alt="Feature Image 2" layout="responsive" width={500} height={500} />
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12} md={6} justifyContent={"center"}>
+                      <Card text={items[1].text} index={1} />
+                    </Grid>
+                  </Grid>
+
+                  {/* Feature 3 */}
+                  <Grid container item xs={12} key={2} alignItems="center" flexDirection="row" justifyContent={"center"}>
+                    <Grid item xs={12} md={6} justifyContent={"center"}>
+                      <Box
+                        sx={{
+                          width: '70%',
+                          height: 'auto',
+                          borderRadius: '5%',
+                          overflow: 'hidden',
+                          mb: 2, // Margin bottom to separate from the card
+                          justifyContent:"center",
+                        }}
+                      >
+                        <Image src={items[2].imgSrc} alt="Feature Image 3" layout="responsive" width={500} height={500} />
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12} md={6} justifyContent={"center"}>
+                      <Card text={items[2].text} index={2} />
+                    </Grid>
+                  </Grid>
+                </Grid>
               </Container>
             </Box>
             
@@ -121,7 +188,7 @@ export default function HomePage() {
                 </Container>
             </Box>
             <Typography variant='body2' align='center' sx={{ fontSize: '0.875rem' }}>
-              MediBot | Copyright @ 2024
+              MedHub | Copyright @ 2024
             </Typography>
         </>
   );

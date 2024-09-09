@@ -1,7 +1,5 @@
 'use client'
 
-import Image from "next/image";
-import styles from '../page.module.css';
 import { Box, Button, Stack, TextField, InputAdornment } from "@mui/material";
 import MicIcon from '@mui/icons-material/Mic';
 import Navbar from '../components/NavBar';

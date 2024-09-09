@@ -6,16 +6,16 @@ function Card({ text, index }) {
   return (
     <motion.div
       style={{
-        width: '80vw',
-        maxWidth: '600px',
-        height: '30vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        width: '70vw',
+        maxWidth: '400px',
+        height: '30vh',
         borderRadius: '8px',
         background: index % 2 === 0 ? '#0b3663' : '#275f9c',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-        margin: '20px 0',
+        margin: '10px 0px',
         padding: '20px',
         color: '#fff',
       }}
