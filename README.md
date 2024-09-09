@@ -65,8 +65,8 @@ MedHub is a healthcare assistant web application that helps users find nearby cl
 
 - **React**: Frontend framework for building user interfaces.
 - **Google Maps API**: To locate nearby clinics and hospitals.
-- **Firebase**: For user authentication and database management.
-- **EmailJS**: For sending email reminders to users.
+- **Clerk and Firebase**: For user authentication and database management.
+- **SendGrid**: For sending email reminders to users.
 - **Framer Motion**: For smooth animations in the UI.
 - **React-Icons**: For feature icons in the UI.
 
