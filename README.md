@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏥 MedHub
 
-## Getting Started
+MedHub is a healthcare assistant web application that helps users find nearby clinics and hospitals based on their location, manage their medication schedules with calendar reminders, and access a chatbot for symptom checking and treatment suggestions. MedHub simplifies healthcare management with Google Maps integration, email notifications, and real-time chatbot assistance.
 
-First, run the development server:
+## ✨ Features
+
+### 🔐 User Login
+- Secure login using Google Authentication.
+  
+### 🗺️ Google Maps Integration
+- Find the **nearest clinics and hospitals** based on your current location using Google Maps.
+  
+### 💊 Medication Reminders
+- Add medication schedules to your calendar.
+- Get email notifications after adding a reminder.
+- Receive medication reminders **10 minutes before** the scheduled time.
+
+### 🤖 Chatbot Assistance
+- Chat with a bot about your symptoms.
+- Get **treatment suggestions** and advice based on your inputs.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js
+- Firebase account (for authentication and database)
+- Google Cloud API Key (for Maps and Email services)
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   git clone https://github.com/yourusername/MedHub.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Navigate into the project directory:
+```bash
+   cd MedHub
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+5. Install the dependencies:
+```bash
+   npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+6. Create a `.env` file for your environment variables:
 
-## Learn More
+```bash
+   REACT_APP_GOOGLE_MAPS_API_KEY=your-google-maps-api-key
+   REACT_APP_FIREBASE_API_KEY=your-firebase-api-key
+```
 
-To learn more about Next.js, take a look at the following resources:
+7. Start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+   npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🛠️ Technologies Used
 
-## Deploy on Vercel
+- **React**: Frontend framework for building user interfaces.
+- **Google Maps API**: To locate nearby clinics and hospitals.
+- **Firebase**: For user authentication and database management.
+- **EmailJS**: For sending email reminders to users.
+- **Framer Motion**: For smooth animations in the UI.
+- **React-Icons**: For feature icons in the UI.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 UI/UX
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The MedHub interface is designed with simplicity in mind, providing an intuitive user experience to:
+
+- View nearby clinics and hospitals on an interactive map.
+- Set up medication schedules and receive timely email reminders.
+- Access healthcare advice via a chatbot in real-time.
+
+## 🌟 Future Enhancements
+
+- **X-ray Image Readings**: AI-powered x-ray image analysis to assist users.
+- **Advanced Symptom Checking**: More detailed symptom-based analysis with predictive diagnosis.
+
+## 📧 Contact
+
+For more information, feel free to contact us at:
+
+- Website: [https://medhub.com](https://final-proj-five.vercel.app/)
