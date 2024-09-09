@@ -55,7 +55,7 @@ MedHub is a healthcare assistant web application that helps users find nearby cl
 7. Start the development server:
 
 ```bash
-   npm start
+   npm run dev
 ```
 
 ## 🛠️ Technologies Used
