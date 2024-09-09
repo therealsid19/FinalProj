@@ -72,7 +72,7 @@ export default function NavBar() {
           <ListItemIcon>
             <DashboardIcon sx={{ color: 'white'}}/>
           </ListItemIcon>
-          <ListItemText primary="Dashboard" />
+          <ListItemText primary="Maps" />
         </ListItem>
         <ListItem button onClick={() => handleNavigation('/appointments')}>
           <ListItemIcon>
