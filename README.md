@@ -85,4 +85,4 @@ The MedHub interface is designed with simplicity in mind, providing an intuitive
 
 ## 📧 Contact
 
-For more information, feel free to contact us on our website: [https://final-proj-five.vercel.app/](https://final-proj-five.vercel.app/)
+For more information, feel free to contact us on our website: [https://medhub-ai.vercel.app/](https://medhub-ai.vercel.app/)
